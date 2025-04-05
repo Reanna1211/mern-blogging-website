@@ -2,17 +2,18 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+// To get the current directory (replaces __dirname in ES modules)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 
-const __filename = fileURLToPath(import.meta.url); // Convert URL to filename
-const __dirname = path.dirname(__filename); // Get the directory name
+// Serve static files from the frontend's dist folder
+app.use(express.static(path.join(__dirname, '../blogging website - frontend/dist')));
 
-
-app.use(express.static(path.join(__dirname, 'blogging website - frontend', 'dist')));
-
-// If you're using React Router, you might need this route to handle all requests
+// Handle all requests by sending index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'blogging website - frontend', 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '../blogging website - frontend/dist', 'index.html'));
 });
 
 const PORT = process.env.PORT || 5001;
