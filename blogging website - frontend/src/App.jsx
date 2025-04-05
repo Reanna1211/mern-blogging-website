@@ -1,7 +1,11 @@
+import React from 'react';
+
 const App = () => {
-    return (
-        <h1>MERN Blogging website by modern web</h1>
-    )
-}
+  return (
+    <div>
+      <h1>MERN Blogging Website by Modern Web</h1>
+    </div>
+  );
+};
 
 export default App;
