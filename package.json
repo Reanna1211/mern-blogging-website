@@ -1,7 +1,7 @@
 {
   "name": "mern-blogging-website",
   "version": "1.0.0",
-"description": "A MERN blogging website",
+  "description": "A MERN blogging website",
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js", 
@@ -14,8 +14,10 @@
   "engines": {
     "node": "20.18.0"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC"
 }
+
 
