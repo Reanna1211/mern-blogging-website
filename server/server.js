@@ -1,10 +1,16 @@
 import express from 'express';
+import path from 'path';
 
 const app = express();
 
-const PORT = process.env.PORT || 5001;; // Default to 5001 locally, use Heroku's dynamic port in production
+app.use(express.static(path.join(__dirname, 'blogging website - frontend', 'dist')));
 
+// If you're using React Router, you might need this route to handle all requests
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'blogging website - frontend', 'dist', 'index.html'));
+});
+
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
