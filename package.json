@@ -1,0 +1,21 @@
+{
+  "name": "mern-blogging-website",
+  "version": "1.0.0",
+"description": "A MERN blogging website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.10"
+  },
+  "engines": {
+    "node": "20.18.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
