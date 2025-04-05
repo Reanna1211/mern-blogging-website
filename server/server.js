@@ -1,7 +1,12 @@
 import express from 'express';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url); // Convert URL to filename
+const __dirname = path.dirname(__filename); // Get the directory name
+
 
 app.use(express.static(path.join(__dirname, 'blogging website - frontend', 'dist')));
 
