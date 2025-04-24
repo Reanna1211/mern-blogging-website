@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import logo from "../imgs/mindScribble logo 3.png";
 import logoFull from "../imgs/mindScribble logo 3.png";  // with "MindScribble" text
 import logoMobile from "../imgs/mindScribble logo smallscreen.png";  // mobile version
@@ -10,11 +10,12 @@ const Navbar = () => {
     const [searchBoxVisibility, setSearchBoxVisibility] = useState(false);
 
     return (
-        <nav className="navbar pl-[10px] pr-[5px]">
+        <>
+        <nav className="navbar pl-[10px] pr-[5px] h-[100px]">
             <Link to="/" className="flex-none w-[200px] md:w-[200px] max-sm:w-[200px]">  {/* changed from flex-non w-10*/}
 {/* logo */}
-                <img src={logoFull} alt="MindScribble" className="pt-[5px] w-[200px] h-[180px] md:w-[200px] md:h-[200px] hidden sm:block w-[200px] h-[200px] object-contain" /> {/* changed from w-full*/}
-                <img src={logoMobile} alt="MindScribble icon" className="block sm:hidden w-[150px] h-[150px] object-contain"
+                <img src={logoFull} alt="MindScribble" className="pt-[5px] w-[200px] h-[120px] md:w-[200px] md:h-[100px] hidden sm:block w-[200px] h-[70px] object-contain" /> {/* changed from w-full*/}
+                <img src={logoMobile} alt="MindScribble icon" className="block sm:hidden w-[150px] h-[70px] object-contain"
   />
             </Link>
 {/* Search bar show and hidden */}
@@ -43,10 +44,10 @@ const Navbar = () => {
                     <span className="self-center">Write</span>
                 </Link>
                 <div className="flex flex-wrap gap-1 justify-center items-center w-full px-4">
-                <Link className="btn-dark bg-mypurple py-2 text-sm" tp={"/signin"}>
+                <Link className="btn-dark bg-mypurple py-2 text-sm" to={"/signin"}>
                 Sign In
                 </Link>
-                <Link className="btn-light bg-lightpurple py-2 text-sm !text-gray-900 hover:!text-black hidden md:block" tp={"/signup"}>
+                <Link className="btn-light bg-lightpurple py-2 text-sm !text-gray-900 hover:!text-black hidden md:block" to={"/signup"}>
                 Sign Up
                 </Link>
                 </div>
@@ -54,6 +55,8 @@ const Navbar = () => {
 
             </div>
         </nav>
+        <Outlet />
+        </>
     );
 };
 
