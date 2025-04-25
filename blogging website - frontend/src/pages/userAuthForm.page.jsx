@@ -1,10 +1,17 @@
-import InputBox from "../components/input.component"
+import AnimationWrapper from "../common/page-animation";
+import InputBox from "../components/input.component";
+import googleIcon from "../imgs/google.png";
+import { Link } from "react-router-dom";
 
 const UserAuthForm = ({ type }) => {
     return (
-       <section className="h-cover flex items-center justify-center">
+        <AnimationWrapper keyValue={type}>
+       {/* <section className="h-cover flex items-center justify-center"> */}
+       <section className="flex items-center justify-center min-h-screen py-10">
         <form className="w-[80%] max-w-[400px]">
-            <h1 className = "text-4xl font-gelasio capitalize text-center mb-24"> 
+            {/* <h1 className = "text-4xl font-gelasio capitalize text-center mb-24">  */}
+            <h1 className="text-4xl font-gelasio capitalize text-center mb-10">
+    
                 {type == "sign-in" ? "Welcome back" : "Join us today"}
             </h1>
 
@@ -33,11 +40,53 @@ const UserAuthForm = ({ type }) => {
                 
             />
             
+            {/* <button className="btn-light bg-lightpurple center mt-14"
+                type="submit"
+            > */}
+            <button className="btn-light bg-lightpurple center mt-8" type="submit">
 
+                { type.replace("-", " ") }
+            </button>
+            {/* <div className="relative w-full flex items-center gap-2 my-10 opacity-10 uppercase text-black font-bold"> */}
+            <div className="relative w-full flex items-center gap-2 my-6 opacity-10 uppercase text-black font-bold">
+  
+                <hr className="w-1/2 border-black" />
+                <p>or</p>
+                <hr className="w-1/2 border-black" />
+
+            </div>
+
+            <button className="btn-light bg-lightgrey flex items-center justify-center gap-4 w-90% center">
+                <img src= {googleIcon} className="w-5 "/>
+                continue with google
+            </button>
+
+            {
+                type == "sign-in" ? 
+                <p className="mt-6 text-dark-grey text-xl text-center">
+                    Don't have an account ?
+                    <Link to="/signup" className="underline text-black text-xl ml-1">
+                    Join us today
+                    </Link>
+
+
+                </p>
+                :
+                <p className="mt-6 text-dark-grey text-xl text-center">
+                Already a member? ?
+                <Link to="/signin" className="underline text-black text-xl ml-1">
+                Sign in here
+                </Link>
+
+            </p>
+
+
+            }
 
         </form>
 
        </section>
+       </AnimationWrapper>
     )
 }
 
