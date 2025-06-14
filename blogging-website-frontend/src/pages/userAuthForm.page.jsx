@@ -52,10 +52,10 @@ const UserAuthForm = ({ type }) => {
         // let form = new FormData(authForm.current);
         // let formData = {}
 
-        if (!authForm.current || !(authForm.current instanceof HTMLFormElement)) {
-    console.error("authForm is not attached or not a form.");
-    return toast.error("Something went wrong. Please refresh and try again.");
-  }
+ if (!(e.target instanceof HTMLFormElement)) {
+  console.error("Form submission failed: e.target is not a form.");
+  return toast.error("Something went wrong. Please refresh and try again.");
+}
 
  
 
@@ -162,7 +162,7 @@ const UserAuthForm = ({ type }) => {
             > */}
             <button className="btn-light bg-lightpurple center mt-8" 
             type="submit"
-            onClick={handleSubmit}> {/* changed from onClick/onSubmit */}
+            > {/* changed from onClick/onSubmit */}
                 { type.replace("-", " ") }
             </button>
             {/* <div className="relative w-full flex items-center gap-2 my-10 opacity-10 uppercase text-black font-bold"> */}
