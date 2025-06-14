@@ -63,7 +63,7 @@ app.use(express.json())
 
 //this will enable our server to accept data from anywhere
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://helpful-kitten-73537b.netlify.app/'], // Frontend URL
+  origin: ['http://localhost:5173', 'https://helpful-kitten-73537b.netlify.app'], // Frontend URL
   methods: ['GET', 'POST'],
   credentials: true, // Allow cookies to be sent with the request
 })) // was just app.use(cors) but chatGPT said to do this so that we don't get google authentication error
