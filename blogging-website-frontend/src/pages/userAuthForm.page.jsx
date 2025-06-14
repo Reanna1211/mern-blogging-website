@@ -52,6 +52,13 @@ const UserAuthForm = ({ type }) => {
         // let form = new FormData(authForm.current);
         // let formData = {}
 
+        if (!authForm.current || !(authForm.current instanceof HTMLFormElement)) {
+    console.error("authForm is not attached or not a form.");
+    return toast.error("Something went wrong. Please refresh and try again.");
+  }
+
+ 
+
         //NEW
 
         const form = new FormData(authForm.current); // argument changed from authForm.current/e.target
