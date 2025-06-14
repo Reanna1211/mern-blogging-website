@@ -4,8 +4,6 @@ import { fileURLToPath } from 'url';
 import mongoose from 'mongoose';
 import 'dotenv/config';
 import bcrypt from "bcryptjs";
-import admin from 'firebase-admin';
-import serviceAccountKey from "./react-js-blog-website-1618a-firebase-adminsdk-fbsvc-b447eb8c0f.json" assert { type: "json" } // have to say type json to tell the node module node.js that it's a json file that we are importing
 import { getAuth } from "firebase-admin/auth"
 
 // helps with different port numbers between server and frontend
@@ -21,23 +19,51 @@ import jwt from 'jsonwebtoken';
 // Schema below
 import User from './Schema/User.js';
 
+// import admin from 'firebase-admin';
+// import serviceAccountKey from "./react-js-blog-website-1618a-firebase-adminsdk-fbsvc-b447eb8c0f.json" assert { type: "json" } // have to say type json to tell the node module node.js that it's a json file that we are importing
+
+// to make it work locally on deployed through render and netlify:
+
+import admin from 'firebase-admin';
+
 // To get the current directory (replaces __dirname in ES modules)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const startServer = async () => {
+if (process.env.FIREBASE_PROJECT_ID) {
+  // Render / production environment, Firebase setup: use env in Render, JSON locally
+  admin.initializeApp({
+    credential: admin.credential.cert({
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    }),
+  });
+} else {
+  // Local environment
+  const { default: serviceAccount } = await import('./react-js-blog-website-1618a-firebase-adminsdk.json', {
+    assert: { type: 'json' }
+  });
+
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+}
+
+
 
 const app = express();
 const PORT = process.env.PORT || 5005;
 
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccountKey)
-})
+
 
 app.use(express.json())
 
 //this will enable our server to accept data from anywhere
 app.use(cors({
-  origin: 'http://localhost:5173', // Frontend URL
+  origin: ['http://localhost:5173', 'https://helpful-kitten-73537b.netlify.app/'], // Frontend URL
   methods: ['GET', 'POST'],
   credentials: true, // Allow cookies to be sent with the request
 })) // was just app.use(cors) but chatGPT said to do this so that we don't get google authentication error
@@ -235,9 +261,10 @@ const generateUsername = async (email) => {
 
 
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+};
 
-
+startServer();
 
