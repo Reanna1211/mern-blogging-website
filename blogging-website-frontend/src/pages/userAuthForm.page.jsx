@@ -29,10 +29,13 @@ const UserAuthForm = ({ type }) => {
             // console.log(sessionStorage)
             setUserAuth(data)
             })
-        .catch(({ response }) => {
-            toast.error(response.data.error)
+        .catch((error) => {
+            toast.error(error?.response?.data?.error || 'Something went wrong')
         })
         }
+        // .catch(({ response }) => {
+        //     toast.error(response.data.error)
+        // })
     
 
     const handleSubmit = (e) => {
