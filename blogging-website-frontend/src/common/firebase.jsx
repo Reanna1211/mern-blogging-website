@@ -4,7 +4,7 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDIvdUekPmiAv8jPhpmBsxI8e6-rtmb0cY",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "react-js-blog-website-1618a.firebaseapp.com",
   projectId: "react-js-blog-website-1618a",
   storageBucket: "react-js-blog-website-1618a.firebasestorage.app",
