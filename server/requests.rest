@@ -1,8 +1,9 @@
-POST http://localhost:5001/signin
+POST http://localhost:5005/signin
 Content-Type: application/json
 
 {
-    "email": "reannamusoke94@gmail.com",
+    "fullname": "Reanna Musoke",
+    "email": "reannamusoke94@hotmail.co.uk",
     "password": "George123!"
   
 }    
