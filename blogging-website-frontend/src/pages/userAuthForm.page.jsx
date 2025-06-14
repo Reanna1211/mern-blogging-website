@@ -21,6 +21,8 @@ const UserAuthForm = ({ type }) => {
 
     //serverRoute is where it has to send the data and formData is what data to send
     const userAuthThroughServer = (serverRoute, formData) => {
+
+        console.log("API base:", import.meta.env.VITE_SERVER_DOMAIN);
         
         axios.post(import.meta.env.VITE_SERVER_DOMAIN + serverRoute, formData)
         .then(({ data }) => {
