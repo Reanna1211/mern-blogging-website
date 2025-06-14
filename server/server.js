@@ -42,7 +42,7 @@ if (process.env.FIREBASE_PROJECT_ID) {
   });
 } else {
   // Local environment
-  const { default: serviceAccount } = await import('./react-js-blog-website-1618a-firebase-adminsdk.json', {
+  const { default: serviceAccount } = await import('./react-js-blog-website-1618a-firebase-adminsdk-fbsvc-b447eb8c0f.json', {
     assert: { type: 'json' }
   });
 
