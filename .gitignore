@@ -9,6 +9,7 @@ server/node_modules/
 server/.env
 
 blogging-website-frontend/.env
+blogging-website-frontend/.env.production
 
 # Ignore Google Cloud Service Account Credentials 
 
