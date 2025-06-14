@@ -12,7 +12,7 @@ import { authWithGoogle } from "../common/firebase";
 const UserAuthForm = ({ type }) => {
 
 
-    const authForm = useRef(); 
+    // const authForm = useRef(); 
     // - not working as tutorial states
 
     let { userAuth : { access_token }, setUserAuth } = useContext(UserContext)
@@ -61,7 +61,7 @@ const UserAuthForm = ({ type }) => {
 
         //NEW
 
-        const form = new FormData(authForm.current); // argument changed from authForm.current/e.target
+        const form = new FormData(e.target); // argument changed from authForm.current/e.target (chatGPT says e.target is best for netlify and localhost)
         const formData = Object.fromEntries(form.entries());
 
         // for(let [key, value] of form.entries()) {
@@ -124,8 +124,8 @@ const UserAuthForm = ({ type }) => {
        {/* <section className="h-cover flex items-center justify-center"> */}
        <section className="flex items-center justify-center min-h-screen py-10">
         <Toaster />
-        {/* Removed ref={authForm} from form as useRef() not working, added id="formElement instead- did the opposite returned ref stuff because issue with signing in/up. */}
-        <form ref={authForm} className="w-[80%] max-w-[400px]">
+        {/* Removed ref={authForm} from form as useRef() not working, added id="formElement instead- did the opposite returned ref stuff because issue with signing in/up. to work on netlify and localhost added onsubmit */}
+        <form onSubmit={handleSubmit} className="w-[80%] max-w-[400px]">
             {/* <h1 className = "text-4xl font-gelasio capitalize text-center mb-24">  */}
             <h1 className="text-4xl font-gelasio capitalize text-center mb-10">
     
