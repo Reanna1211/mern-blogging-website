@@ -191,7 +191,7 @@ app.get("/test", (req, res) => {
 
 // Handle all requests by sending index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../blogging website - frontend/dist', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '../blogging-website-frontend/dist', 'index.html'));
 });
 
 

@@ -6,7 +6,12 @@ server/node_modules/
 *.log
 
 # Ignore environment files
-.env
+server/.env
+
+blogging-website-frontend/.env
+
 
 # Optional: Mac system file
 .DS_Store
+
+node_modules
