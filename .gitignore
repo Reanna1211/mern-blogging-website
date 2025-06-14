@@ -10,7 +10,7 @@ server/.env
 
 blogging-website-frontend/.env
 
-# Ignore Google CLoud Service Account Credentials 
+# Ignore Google Cloud Service Account Credentials 
 
 server/react-js-blog-website-1618a-firebase-adminsdk-fbsvc-b447eb8c0f.json
 
