@@ -61,18 +61,36 @@ const PORT = process.env.PORT || 5005;
 
 app.use(express.json())
 
+const allowedOrigins = ['http://localhost:5173', 'https://helpful-kitten-73537b.netlify.app']
+
 //this will enable our server to accept data from anywhere
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://helpful-kitten-73537b.netlify.app'], // Frontend URL
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST'],
-  credentials: true, // Allow cookies to be sent with the request
-})) // was just app.use(cors) but chatGPT said to do this so that we don't get google authentication error
+  credentials: true
+}));
 
+ 
 // Serve static files from the frontend's dist folder
 // app.use(express.static(path.resolve(__dirname, '../blogging website - frontend/dist')));
 
+// OLD CORS
 
-
+// app.use(cors({
+//   origin: ['http://localhost:5173', 'https://helpful-kitten-73537b.netlify.app'], // Frontend URL
+//   methods: ['GET', 'POST'],
+//   credentials: true, // Allow cookies to be sent with the request
+// })) // was just app.use(cors) but chatGPT said to do this so that we don't get google authentication error
+//  } // Frontend URL
+//   methods: ['GET', 'POST'],
+//   credentials: true, // Allow cookies to be sent with the request
+// })) // was just app.use(cors) but chatGPT said to do this so that we don't get google authentication error
 
 
 app.post("/signup", (req, res) => {
