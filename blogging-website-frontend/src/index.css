@@ -125,3 +125,7 @@
 .cdx-settings-button[data-tune='stretched'] {
   display: none;
 }
+
+.purpleColor {
+    color: #7B54D4
+}
